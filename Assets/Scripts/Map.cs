@@ -14,9 +14,11 @@ public class Map : MonoBehaviour
 
     [SerializeField]
     public int scrollPower;
-    public int mapScrollPower;
-    public Image image;
 
+    public Image image;
+    public Sprite sprite;
+
+    TouchtoScreen touchtoScreen;
     public void Scroll()
     {
         if (block.transform.position.y <= -12)
@@ -26,17 +28,17 @@ public class Map : MonoBehaviour
       if (block2.transform.position.y <= -24)
             block2.transform.position = new Vector3(block2.transform.position.x, 0, block2.transform.position.z);
 
+        if (touchtoScreen.Point >= 10)
+            image.sprite = sprite;
 
 
-        gameObject.transform.position += Vector3.down * scrollPower;
-        image.transform.position += Vector3.down * mapScrollPower;
-
-
+        block.transform.position += Vector3.down * scrollPower;
+        block2.transform.position += Vector3.down * scrollPower;
     }
 
     void Start()
     {
-        
+        touchtoScreen = FindAnyObjectByType<TouchtoScreen>(); 
     }
 
     // Update is called once per frame

@@ -5,20 +5,20 @@ using UnityEngine.EventSystems;
 
 public class TouchtoScreen : MonoBehaviour, IPointerDownHandler
 {
-    Player player;
+    private int point;
+
+    public int Point { get { return point; } private set { point = value; } }
+    
     Map map;
 
     private void Start()
     {
         map = FindAnyObjectByType<Map>();
-        player = FindAnyObjectByType<Player>();    
     }
 
     public void OnPointerDown(PointerEventData eventData)
     {
+        point++;
         map.Scroll();
-        //player.Jump();
-        // Player.Jump();
-        Debug.Log("Player Jume");
     }
 }
