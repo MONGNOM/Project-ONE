@@ -9,15 +9,18 @@ public class Player : MonoBehaviour
     private float speed;
 
     private Rigidbody2D rigid;
+    Animator anim;
 
     private void Awake()
     {
+        anim = GetComponent<Animator>();
         rigid = GetComponent<Rigidbody2D>();   
     }
 
     public void Jump()
     {
-        rigid.AddForce(Vector2.up * speed, ForceMode2D.Impulse);
+        //rigid.AddForce(Vector2.up * speed, ForceMode2D.Impulse);
+        anim.SetTrigger("doTouch");
     }
 
 }

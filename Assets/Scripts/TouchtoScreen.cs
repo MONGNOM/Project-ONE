@@ -8,11 +8,12 @@ public class TouchtoScreen : MonoBehaviour, IPointerDownHandler
     private int point;
 
     public int Point { get { return point; } private set { point = value; } }
-    
+    Player player;
     Map map;
 
     private void Start()
     {
+        player = FindAnyObjectByType<Player>();
         map = FindAnyObjectByType<Map>();
     }
 
@@ -20,5 +21,7 @@ public class TouchtoScreen : MonoBehaviour, IPointerDownHandler
     {
         point++;
         map.Scroll();
+        player.Jump();
+        map.gameOver = true;
     }
 }
