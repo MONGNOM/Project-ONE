@@ -1,13 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class TouchtoScreen : MonoBehaviour, IPointerDownHandler
 {
-    private int point;
-
-    public int Point { get { return point; } private set { point = value; } }
+  
+    Image image;
     Player player;
     Map map;
 
@@ -15,13 +16,29 @@ public class TouchtoScreen : MonoBehaviour, IPointerDownHandler
     {
         player = FindAnyObjectByType<Player>();
         map = FindAnyObjectByType<Map>();
+        image = GetComponent<Image>();
     }
 
     public void OnPointerDown(PointerEventData eventData)
     {
-        point++;
-        map.Scroll();
-        player.Jump();
-        map.gameOver = true;
+
+        if (map.blockpoint == map.blockList.Count -1)
+            map.blockpoint = 0;
+
+
+        SpriteRenderer spriteRenderer = map.blockList[map.blockpoint].GetComponent<SpriteRenderer>();
+        if (true)//spriteRenderer.color.r == image.color.r && spriteRenderer.color.g == image.color.g && spriteRenderer.color.b == image.color.b)
+        {
+            map.blockpoint++;
+            map.Point++;
+            map.Scroll();
+            player.Jump();
+            player.transform.position = map.blockList[map.blockpoint].transform.position;
+        }
+        else
+        {
+            Application.Quit();
+            Time.timeScale = 0;
+        }
     }
 }

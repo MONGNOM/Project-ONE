@@ -1,19 +1,31 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class Map : MonoBehaviour
 {
     // Start is called before the first frame update
+
+
+    private int point;
+        // o
+    public int Point { get { return point; } set { point = value; textPointDeleatgae?.Invoke(point); } }
+
+    public int blockpoint = 0;
+
     [SerializeField]
     GameObject block;
 
     [SerializeField]
     GameObject block2;
 
-    [SerializeField]
     public int scrollPower;
+
+    public float blockscrollPower;
+
+    public Image backGroundImage;
 
     public Image image1;
     public Image image2;
@@ -25,10 +37,16 @@ public class Map : MonoBehaviour
 
     public List<GameObject> blockList;
     public List<Color> colors = new List<Color>();
+    public TextMeshProUGUI textpoint;
+
+    public delegate void TextMeshProUGUIDelegate(int textpoint);
+    TextMeshProUGUIDelegate textPointDeleatgae;
+
    
     public bool gameOver;
     public void Scroll()
     {
+        StartCoroutine(BackGround());
         if (block.transform.position.y <= -12)
             block.transform.position = new Vector3(block.transform.position.x, 12, block.transform.position.z);
     
@@ -36,34 +54,28 @@ public class Map : MonoBehaviour
       if (block2.transform.position.y <= -24)
             block2.transform.position = new Vector3(block2.transform.position.x, 0, block2.transform.position.z);
 
-     
-
         block.transform.position += Vector3.down * scrollPower;
         block2.transform.position += Vector3.down * scrollPower;
+        backGroundImage.transform.position += Vector3.down * blockscrollPower;
 
-        for (int i = 0; i < blockList.Count; i++)
-        {
-            spriteRenderer = blockList[i].transform.GetComponent<SpriteRenderer>();
-            int rand = Random.Range(0, 3);
-            spriteRenderer.color = colors[rand];
-            Debug.Log(rand);
-        }
-        
+        textPointDeleatgae += TextPoint;
     }
 
+    private void TextPoint(int point)
+    {
+        textpoint.text = point.ToString();
+    }
     IEnumerator BackGround()
     {
-        while (gameOver)
-        {
-            yield return new WaitForSeconds(2);
-            image1.color = new Color(image1.color.r,image1.color.g,image1.color.b,0.5f);
+       
+            yield return new WaitForSeconds(0.3f);
+            image1.color = new Color(image1.color.r,image1.color.g,image1.color.b,   0.5f);
             image2.color = new Color(image2.color.r, image2.color.g, image2.color.b, 0.5f);
             image3.color = new Color(image3.color.r, image3.color.g, image3.color.b, 0.5f);
             yield return new WaitForSeconds(0.3f);
             image1.color = new Color(image1.color.r, image1.color.g, image1.color.b,0);
             image2.color = new Color(image2.color.r, image2.color.g, image2.color.b,0);
             image3.color = new Color(image3.color.r, image3.color.g, image3.color.b,0);
-        }
     }
 
 
@@ -75,6 +87,15 @@ public class Map : MonoBehaviour
         colors.Add(Color.blue);
         colors.Add(Color.green);
         StartCoroutine(BackGround());
+
+
+        for (int i = 0; i < blockList.Count; i++)
+        {
+            int rand = Random.Range(0, 3);
+            spriteRenderer = blockList[i].transform.GetComponent<SpriteRenderer>();
+            spriteRenderer.color = colors[rand];
+            Debug.Log(rand);
+        }
     }
 
 
@@ -82,5 +103,6 @@ public class Map : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
     }
 }
