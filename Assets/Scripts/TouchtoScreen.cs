@@ -22,7 +22,7 @@ public class TouchtoScreen : MonoBehaviour, IPointerDownHandler
     public void OnPointerDown(PointerEventData eventData)
     {
 
-        if (map.blockpoint == map.blockList.Count -1)
+        if (map.blockpoint == map.blockList.Count-1)
             map.blockpoint = 0;
 
 
@@ -34,6 +34,7 @@ public class TouchtoScreen : MonoBehaviour, IPointerDownHandler
             map.Scroll();
             player.Jump();
             player.transform.position = map.blockList[map.blockpoint].transform.position;
+            map.fillImage.color = spriteRenderer.color;
         }
         else
         {

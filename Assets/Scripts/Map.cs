@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -25,11 +26,12 @@ public class Map : MonoBehaviour
 
     public float blockscrollPower;
 
-    public Image backGroundImage;
+    public GameObject backGroundImage;
 
     public Image image1;
     public Image image2;
     public Image image3;
+    public Image fillImage;
 
     public Sprite sprite;
     TouchtoScreen touchtoScreen;
@@ -38,15 +40,44 @@ public class Map : MonoBehaviour
     public List<GameObject> blockList;
     public List<Color> colors = new List<Color>();
     public TextMeshProUGUI textpoint;
+    public Slider slider;
 
     public delegate void TextMeshProUGUIDelegate(int textpoint);
     TextMeshProUGUIDelegate textPointDeleatgae;
 
    
     public bool gameOver;
+
+
+    public void UseSkil()
+    {
+
+        if (slider.value < 100)
+            return;
+
+
+        // 초록색 스킬 = 포인트를 2~5 점 점수를 준다
+        // 파란색 스킬 = 방어스킬 한번 잘못 눌러도 무마 시켜준다
+        // 빨간색 스킬 = 시간이 안흘러가게끔 해주는 기술?
+
+        if (fillImage.color == Color.green) { }
+        else if (fillImage.color == Color.blue) { }
+        else if (fillImage.color == Color.red) { }
+
+            slider.value = 0;
+        Debug.Log("스킬을 사용함");
+    }
+
+
+
     public void Scroll()
     {
         StartCoroutine(BackGround());
+
+        
+        if (!(slider.value >= 100))
+        slider.value++;
+
         if (block.transform.position.y <= -12)
             block.transform.position = new Vector3(block.transform.position.x, 12, block.transform.position.z);
     
@@ -57,13 +88,20 @@ public class Map : MonoBehaviour
         block.transform.position += Vector3.down * scrollPower;
         block2.transform.position += Vector3.down * scrollPower;
         backGroundImage.transform.position += Vector3.down * blockscrollPower;
-
+         
         textPointDeleatgae += TextPoint;
+
     }
 
     private void TextPoint(int point)
     {
         textpoint.text = point.ToString();
+    }
+
+
+    IEnumerator GreenSkill()
+    {
+        yield return new WaitForSeconds(10);
     }
     IEnumerator BackGround()
     {
@@ -91,7 +129,7 @@ public class Map : MonoBehaviour
 
         for (int i = 0; i < blockList.Count; i++)
         {
-            int rand = Random.Range(0, 3);
+            int rand = UnityEngine.Random.Range(0, 3);
             spriteRenderer = blockList[i].transform.GetComponent<SpriteRenderer>();
             spriteRenderer.color = colors[rand];
             Debug.Log(rand);
