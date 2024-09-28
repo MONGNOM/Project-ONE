@@ -32,6 +32,7 @@ public class Map : MonoBehaviour
     public Image image2;
     public Image image3;
     public Image fillImage;
+    
 
     public Sprite sprite;
     TouchtoScreen touchtoScreen;
@@ -41,6 +42,8 @@ public class Map : MonoBehaviour
     public List<Color> colors = new List<Color>();
     public TextMeshProUGUI textpoint;
     public Slider slider;
+    public Slider hpFillImage;
+
 
     public delegate void TextMeshProUGUIDelegate(int textpoint);
     TextMeshProUGUIDelegate textPointDeleatgae;
@@ -98,11 +101,23 @@ public class Map : MonoBehaviour
         textpoint.text = point.ToString();
     }
 
+    IEnumerator HpDown()
+    {
+        while (hpFillImage.value > 0)
+        {
+            hpFillImage.value--;
+            Debug.Log("데미지들어감");
+            yield return new WaitForSeconds(1);
+        }
+    }
+
 
     IEnumerator GreenSkill()
     {
         yield return new WaitForSeconds(10);
     }
+
+
     IEnumerator BackGround()
     {
        
@@ -125,7 +140,7 @@ public class Map : MonoBehaviour
         colors.Add(Color.blue);
         colors.Add(Color.green);
         StartCoroutine(BackGround());
-
+        StartCoroutine(HpDown());
 
         for (int i = 0; i < blockList.Count; i++)
         {
