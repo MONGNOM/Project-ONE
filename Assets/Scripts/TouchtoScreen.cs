@@ -29,6 +29,7 @@ public class TouchtoScreen : MonoBehaviour, IPointerDownHandler
         SpriteRenderer spriteRenderer = map.blockList[map.blockpoint].GetComponent<SpriteRenderer>();
         if (true)//spriteRenderer.color.r == image.color.r && spriteRenderer.color.g == image.color.g && spriteRenderer.color.b == image.color.b)
         {
+            map.hpFillImage.value += 0.2f;
             map.blockpoint++;
             map.Point++;
             map.Scroll();
