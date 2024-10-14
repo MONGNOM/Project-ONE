@@ -21,31 +21,12 @@ public class HpMonster : MonoBehaviour
         yield return new WaitForSeconds(attackTime);
     }
 
-    private void Awake()
-    {
-    }
-
     // Start is called before the first frame update
     void Start()
     {
         StartCoroutine(MoveHpMonster());
     }
 
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        Debug.Log("666");
-
-        if (collision.gameObject.GetComponent<Bullet>())
-        { }
-            
-    }
-
+  
 
 }

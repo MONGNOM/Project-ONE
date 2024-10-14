@@ -29,7 +29,6 @@ public class Bullet : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        // 처음에 이미지랑 이미지로 어떻게 충돌 구별할지 체크해봤는데 밑에 콜라이더를 추가하고 했더니 가능해졌따 
         if (collision.gameObject.GetComponent<HpMonster>())
         {
             Destroy(gameObject);
