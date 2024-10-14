@@ -36,6 +36,7 @@ public class TouchtoScreen : MonoBehaviour, IPointerDownHandler
             player.Jump();
             player.transform.position = map.blockList[map.blockpoint].transform.position;
             map.fillImage.color = spriteRenderer.color;
+            map.MakeBullet();
         }
         else
         {

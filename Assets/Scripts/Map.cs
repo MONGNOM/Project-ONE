@@ -9,6 +9,9 @@ public class Map : MonoBehaviour
 {
     // Start is called before the first frame update
 
+    public Image towerImage;
+    public GameObject bullet;
+
 
     private int point;
         // o
@@ -51,6 +54,11 @@ public class Map : MonoBehaviour
    
     public bool gameOver;
 
+
+    public void MakeBullet()
+    { 
+        Instantiate(bullet);
+    }
 
     public void UseSkil()
     {
