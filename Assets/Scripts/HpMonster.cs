@@ -12,7 +12,6 @@ public class HpMonster : MonoBehaviour
     private float attackTime = 1;
     private float attackDamage = 1; // 타워 체력마늨 
 
-    private BoxCollider2D box;
 
 
     IEnumerator MoveHpMonster()
@@ -24,7 +23,6 @@ public class HpMonster : MonoBehaviour
 
     private void Awake()
     {
-        box = gameObject.GetComponent<BoxCollider2D>();
     }
 
     // Start is called before the first frame update
@@ -42,8 +40,11 @@ public class HpMonster : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        Debug.Log("666");
+
         if (collision.gameObject.GetComponent<Bullet>())
-            Debug.Log("666");
+        { }
+            
     }
 
 
