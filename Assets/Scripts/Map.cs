@@ -11,6 +11,7 @@ public class Map : MonoBehaviour
 
     public Image towerImage;
     public GameObject bullet;
+    public GameObject bulletCanvas;
 
 
     private int point;
@@ -57,7 +58,7 @@ public class Map : MonoBehaviour
 
     public void MakeBullet()
     { 
-        Instantiate(bullet);
+        Instantiate(bullet, bulletCanvas.transform);
     }
 
     public void UseSkil()
@@ -148,7 +149,7 @@ public class Map : MonoBehaviour
         colors.Add(Color.blue);
         colors.Add(Color.green);
         StartCoroutine(BackGround());
-        StartCoroutine(HpDown());
+        //StartCoroutine(HpDown()); // hp
 
         for (int i = 0; i < blockList.Count; i++)
         {

@@ -12,11 +12,19 @@ public class HpMonster : MonoBehaviour
     private float attackTime = 1;
     private float attackDamage = 1; // 타워 체력마늨 
 
+    private BoxCollider2D box;
+
+
     IEnumerator MoveHpMonster()
     {
         // monsterhp;    
         // ㄴ 함수로 빼내서 조건문걸고 조건 통과하면 hp 및 데미지 변경으로 해줘야 쓸모없는 코드 안탈듯
         yield return new WaitForSeconds(attackTime);
+    }
+
+    private void Awake()
+    {
+        box = gameObject.GetComponent<BoxCollider2D>();
     }
 
     // Start is called before the first frame update
@@ -25,9 +33,18 @@ public class HpMonster : MonoBehaviour
         StartCoroutine(MoveHpMonster());
     }
 
+
     // Update is called once per frame
     void Update()
     {
         
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.GetComponent<Bullet>())
+            Debug.Log("666");
+    }
+
+
 }
