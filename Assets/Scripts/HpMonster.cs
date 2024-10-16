@@ -21,12 +21,28 @@ public class HpMonster : MonoBehaviour
         yield return new WaitForSeconds(attackTime);
     }
 
+    private void TakeHit(float damage)
+    {
+        monsterHp -= damage;
+    }
+
     // Start is called before the first frame update
     void Start()
     {
         StartCoroutine(MoveHpMonster());
     }
 
-  
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.GetComponent<Bullet>())
+        {
+            Bullet bullet = collision.GetComponent<Bullet>();
+            TakeHit(bullet.damage);
+            Debug.Log(monsterHp);
+        }
+
+    }
+
+
 
 }
