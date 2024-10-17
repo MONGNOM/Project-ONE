@@ -27,7 +27,6 @@ public class HpMonster : MonoBehaviour
 
     public void HpString(float hp)
     {
-        Debug.Log("HpString");
         hpImage.fillAmount = hp;
     }
 
@@ -41,7 +40,6 @@ public class HpMonster : MonoBehaviour
     private void TakeHit(float damage)
     {
         MonsterHp -= damage;
-        Debug.Log("TakeHit");
     }
 
     // Start is called before the first frame update
@@ -59,9 +57,7 @@ public class HpMonster : MonoBehaviour
         if (collision.GetComponent<Bullet>())
         {
             Bullet bullet = collision.GetComponent<Bullet>();
-            TakeHit(0.1f);
-            Debug.Log("OnTriggerEnter2D");
-            
+            TakeHit(bullet.damage);
         }
     }
 
