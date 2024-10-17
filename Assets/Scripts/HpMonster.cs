@@ -10,6 +10,7 @@ public class HpMonster : MonoBehaviour
     // hp에 총알 데미지를 대입해서 데미지를 받는싱그로 진행
 
     public Image hpImage;
+    public Image mpImage;
 
     private float monsterHp; // 점수에 맞게 설정해주는게 맞을듯
 
@@ -32,7 +33,12 @@ public class HpMonster : MonoBehaviour
 
     IEnumerator MoveHpMonster()
     {
-        yield return new WaitForSeconds(attackTime);
+        while (mpImage.fillAmount <= 1)
+        {
+            yield return new WaitForSeconds(attackTime);
+            mpImage.fillAmount += 0.01f;
+            Debug.Log("코루틴");
+        }
         // attackImage;    
         // ㄴ 함수로 빼내서 조건문걸고 조건 통과하면 hp 및 데미지 변경으로 해줘야 쓸모없는 코드 안탈듯
     }
