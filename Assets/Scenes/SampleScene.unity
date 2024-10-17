@@ -756,7 +756,6 @@ GameObject:
   - component: {fileID: 195951943}
   - component: {fileID: 195951942}
   - component: {fileID: 195951941}
-  - component: {fileID: 195951944}
   m_Layer: 5
   m_Name: ExitButton
   m_TagString: Untagged
@@ -828,7 +827,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 195951944}
+      - m_Target: {fileID: 1936226894}
         m_TargetAssemblyTypeName: GameOverPage, Assembly-CSharp
         m_MethodName: GameExit
         m_Mode: 1
@@ -878,18 +877,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 195951939}
   m_CullTransparentMesh: 1
---- !u!114 &195951944
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 195951939}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 70aca9ba00edb024ba43f57851b50510, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &258460169
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2793,6 +2780,34 @@ PrefabInstance:
       propertyPath: mpImage
       value: 
       objectReference: {fileID: 469569706}
+    - target: {fileID: 3792991742217100296, guid: 210383e49539cd04095e2580bc4cf3b9, type: 3}
+      propertyPath: pageon.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3792991742217100296, guid: 210383e49539cd04095e2580bc4cf3b9, type: 3}
+      propertyPath: pageon.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3792991742217100296, guid: 210383e49539cd04095e2580bc4cf3b9, type: 3}
+      propertyPath: pageon.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1936226894}
+    - target: {fileID: 3792991742217100296, guid: 210383e49539cd04095e2580bc4cf3b9, type: 3}
+      propertyPath: pageon.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3792991742217100296, guid: 210383e49539cd04095e2580bc4cf3b9, type: 3}
+      propertyPath: pageon.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: PageOn
+      objectReference: {fileID: 0}
+    - target: {fileID: 3792991742217100296, guid: 210383e49539cd04095e2580bc4cf3b9, type: 3}
+      propertyPath: pageon.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: GameOverPage, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 3792991742217100296, guid: 210383e49539cd04095e2580bc4cf3b9, type: 3}
+      propertyPath: pageon.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 6489615625627926116, guid: 210383e49539cd04095e2580bc4cf3b9, type: 3}
       propertyPath: m_FillAmount
       value: 0
@@ -4437,6 +4452,7 @@ GameObject:
   - component: {fileID: 1936226891}
   - component: {fileID: 1936226893}
   - component: {fileID: 1936226892}
+  - component: {fileID: 1936226894}
   m_Layer: 5
   m_Name: GameOverBackGround
   m_TagString: Untagged
@@ -4505,6 +4521,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1936226890}
   m_CullTransparentMesh: 1
+--- !u!114 &1936226894
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1936226890}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70aca9ba00edb024ba43f57851b50510, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1970408118
 GameObject:
   m_ObjectHideFlags: 0

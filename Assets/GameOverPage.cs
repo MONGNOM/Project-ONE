@@ -15,6 +15,12 @@ public class GameOverPage : MonoBehaviour
         Application.Quit();
     }
 
+    public void PageOn()
+    { 
+        gameObject.SetActive(true);
+    }
 
-   
+
+
+
 }

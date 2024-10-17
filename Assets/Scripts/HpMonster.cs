@@ -1,7 +1,9 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
 public class HpMonster : MonoBehaviour
@@ -12,6 +14,7 @@ public class HpMonster : MonoBehaviour
     public Sprite attack;
     public Image hpImage;
     public Image mpImage;
+    public UnityEvent pageon;
 
     private float monsterHp; // 점수에 맞게 설정해주는게 맞을듯
 
@@ -29,6 +32,7 @@ public class HpMonster : MonoBehaviour
     {
         idle.sprite = attack;
         Time.timeScale = 0;
+        pageon?.Invoke();
     }
 
     public void HpString(float hp)
