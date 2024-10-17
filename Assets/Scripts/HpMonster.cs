@@ -14,7 +14,9 @@ public class HpMonster : MonoBehaviour
     private float monsterHp; // 점수에 맞게 설정해주는게 맞을듯
 
     public float MonsterHp { get { return monsterHp; } private set { monsterHp = value; changeHp?.Invoke(monsterHp); } }
+
     public delegate void ChangeMonsterHp(float hp);
+    
     ChangeMonsterHp changeHp;
 
 
@@ -23,11 +25,10 @@ public class HpMonster : MonoBehaviour
 
 
 
-
-    private void HpString(float hp)
+    public void HpString(float hp)
     {
-       hpImage.fillAmount = hp;
-        Debug.Log("str: " + hp);
+        Debug.Log("HpString");
+        hpImage.fillAmount = hp;
     }
 
     IEnumerator MoveHpMonster()
@@ -39,26 +40,28 @@ public class HpMonster : MonoBehaviour
 
     private void TakeHit(float damage)
     {
-        monsterHp -= damage;
+        MonsterHp -= damage;
+        Debug.Log("TakeHit");
     }
 
     // Start is called before the first frame update
     void Start()
     {
-        monsterHp = 1000;
-        //hpImage.fillAmount = monsterHp;
-        hpImage.fillAmount = 10;
-       changeHp += HpString;
-        StartCoroutine(MoveHpMonster());
+        changeHp += HpString;
+        monsterHp = 1;
+       hpImage.fillAmount = monsterHp;
+       StartCoroutine(MoveHpMonster());
     }
+
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.GetComponent<Bullet>())
         {
             Bullet bullet = collision.GetComponent<Bullet>();
-            TakeHit(bullet.damage);
-            Debug.Log(monsterHp);
+            TakeHit(0.1f);
+            Debug.Log("OnTriggerEnter2D");
+            
         }
     }
 

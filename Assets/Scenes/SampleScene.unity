@@ -2322,6 +2322,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 119788880}
     m_Modifications:
+    - target: {fileID: 3453638885041326777, guid: 210383e49539cd04095e2580bc4cf3b9, type: 3}
+      propertyPath: m_FillAmount
+      value: 0.363
+      objectReference: {fileID: 0}
+    - target: {fileID: 3453638885041326777, guid: 210383e49539cd04095e2580bc4cf3b9, type: 3}
+      propertyPath: m_PreserveAspect
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3792991742217100296, guid: 210383e49539cd04095e2580bc4cf3b9, type: 3}
       propertyPath: hpImage
       value: 
