@@ -32,7 +32,6 @@ public class HpMonster : MonoBehaviour
     {
         idle.sprite = attack;
         Time.timeScale = 0;
-        pageon?.Invoke();
     }
 
     public void HpString(float hp)

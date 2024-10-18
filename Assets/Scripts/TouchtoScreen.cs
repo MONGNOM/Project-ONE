@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -11,11 +12,13 @@ public class TouchtoScreen : MonoBehaviour, IPointerDownHandler
     Image image;
     Player player;
     Map map;
+    HpMonster monster;
 
     private void Start()
     {
         player = FindAnyObjectByType<Player>();
         map = FindAnyObjectByType<Map>();
+        monster = FindAnyObjectByType<HpMonster>();
         image = GetComponent<Image>();
     }
 
@@ -37,6 +40,7 @@ public class TouchtoScreen : MonoBehaviour, IPointerDownHandler
             player.transform.position = map.blockList[map.blockpoint].transform.position;
             map.fillImage.color = spriteRenderer.color;
             map.MakeBullet();
+            monster.mpImage.fillAmount -= 0.005f;
         }
         else
         {

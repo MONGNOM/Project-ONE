@@ -15,8 +15,10 @@ public class GameOverPage : MonoBehaviour
         Application.Quit();
     }
 
-    public void PageOn()
-    { 
+    IEnumerator PageOn()
+    {
+        // monster updata에 어택부분 처리를 다른곳에서 해줘야함 
+        yield return new WaitForSeconds(2);
         gameObject.SetActive(true);
     }
 
