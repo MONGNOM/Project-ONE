@@ -40,12 +40,11 @@ public class TouchtoScreen : MonoBehaviour, IPointerDownHandler
             player.transform.position = map.blockList[map.blockpoint].transform.position;
             map.fillImage.color = spriteRenderer.color;
             map.MakeBullet();
-            monster.mpImage.fillAmount -= 0.005f;
+            monster.mpImage.fillAmount -= 0.01f;
         }
         else
         {
-            Application.Quit();
-            Time.timeScale = 0;
+            monster.mpImage.fillAmount += 0.1f;
         }
     }
 }

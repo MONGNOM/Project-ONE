@@ -44,7 +44,7 @@ public class HpMonster : MonoBehaviour
         while (mpImage.fillAmount <= 1)
         {
             yield return new WaitForSeconds(attackTime);
-            mpImage.fillAmount += 0.01f;
+            mpImage.fillAmount += 0.1f;
         }
         // attackImage;    
         // ㄴ 함수로 빼내서 조건문걸고 조건 통과하면 hp 및 데미지 변경으로 해줘야 쓸모없는 코드 안탈듯
@@ -59,7 +59,7 @@ public class HpMonster : MonoBehaviour
     void Start()
     {
         changeHp += HpString;
-        monsterHp = 1;
+        monsterHp = 0;
        hpImage.fillAmount = monsterHp;
        StartCoroutine(MoveHpMonster());
     }
