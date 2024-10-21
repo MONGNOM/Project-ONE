@@ -15,6 +15,7 @@ public class HpMonster : MonoBehaviour
     public Image hpImage;
     public Image mpImage;
     public UnityEvent pageon;
+    public GameOverPage overPage;
 
     private float monsterHp; // 점수에 맞게 설정해주는게 맞을듯
 
@@ -28,36 +29,16 @@ public class HpMonster : MonoBehaviour
     private float attackTime = 1;
     private float attackDamage = 1; // 타워 체력마늨 
 
-    public void Attack()
-    {
-        idle.sprite = attack;
-        Time.timeScale = 0;
-    }
 
-    public void HpString(float hp)
+    private void Awake()
     {
-        hpImage.fillAmount = hp;
-    }
-
-    IEnumerator MoveHpMonster()
-    {
-        while (mpImage.fillAmount <= 1)
-        {
-            yield return new WaitForSeconds(attackTime);
-            mpImage.fillAmount += 0.1f;
-        }
-        // attackImage;    
-        // ㄴ 함수로 빼내서 조건문걸고 조건 통과하면 hp 및 데미지 변경으로 해줘야 쓸모없는 코드 안탈듯
-    }
-
-    private void TakeHit(float damage)
-    {
-        MonsterHp -= damage;
+        
     }
 
     // Start is called before the first frame update
     void Start()
     {
+        overPage = FindObjectOfType<GameOverPage>();
         changeHp += HpString;
         monsterHp = 0;
        hpImage.fillAmount = monsterHp;
@@ -66,8 +47,7 @@ public class HpMonster : MonoBehaviour
 
     private void Update()
     {
-        if (mpImage.fillAmount >= 1) 
-        { Attack(); }
+        
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -78,6 +58,39 @@ public class HpMonster : MonoBehaviour
             TakeHit(bullet.damage);
             
         }
+    }
+
+    public void Attack()
+    {
+        idle.sprite = attack;
+        Time.timeScale = 0;
+        overPage.PageOnStart();
+    }
+
+    public void HpString(float hp)
+    {
+        hpImage.fillAmount = hp;
+    }
+
+    IEnumerator MoveHpMonster()
+    {
+        while (mpImage.fillAmount < 1)
+        {
+            yield return new WaitForSeconds(attackTime);
+            mpImage.fillAmount += 0.1f;
+            Debug.Log(mpImage.fillAmount);
+            Debug.Log("게이바 채움");
+        }
+
+        Attack();
+        Debug.Log("공격");
+        // attackImage;    
+        // ㄴ 함수로 빼내서 조건문걸고 조건 통과하면 hp 및 데미지 변경으로 해줘야 쓸모없는 코드 안탈듯
+    }
+
+    private void TakeHit(float damage)
+    {
+        MonsterHp -= damage;
     }
 
 

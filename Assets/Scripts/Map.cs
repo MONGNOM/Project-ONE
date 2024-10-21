@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -55,7 +56,6 @@ public class Map : MonoBehaviour
    
     public bool gameOver;
 
-
     public void MakeBullet()
     { 
         Instantiate(bullet, bulletCanvas.transform);
@@ -84,7 +84,7 @@ public class Map : MonoBehaviour
 
         
         if (!(skillbar.fillAmount >= 1))
-            skillbar.fillAmount += 0.05f;
+            skillbar.fillAmount += 0.02f;
 
         if (block.transform.position.y <= -12)
             block.transform.position = new Vector3(block.transform.position.x, 12, block.transform.position.z);
@@ -131,6 +131,7 @@ public class Map : MonoBehaviour
     void Start()
     {
         gameOver = true;
+        skillbar.fillAmount = 0;
         touchtoScreen = FindAnyObjectByType<TouchtoScreen>();
         colors.Add(Color.red);
         colors.Add(Color.blue);
