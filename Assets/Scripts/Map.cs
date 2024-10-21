@@ -67,11 +67,6 @@ public class Map : MonoBehaviour
         if (skillbar.fillAmount < 1)
             return;
 
-        // 초록색 스킬 = 포인트를 2~5 점 점수를 준다
-        // 파란색 스킬 = 방어스킬 한번 잘못 눌러도 무마 시켜준다
-        // 빨간색 스킬 = 시간이 안흘러가게끔 해주는 기술?
-
-   
         skillbar.fillAmount = 0;
         Debug.Log("스킬을 사용함");
     }
