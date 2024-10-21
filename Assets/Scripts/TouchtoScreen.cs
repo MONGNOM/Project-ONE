@@ -32,13 +32,11 @@ public class TouchtoScreen : MonoBehaviour, IPointerDownHandler
         SpriteRenderer spriteRenderer = map.blockList[map.blockpoint].GetComponent<SpriteRenderer>();
         if (true)//spriteRenderer.color.r == image.color.r && spriteRenderer.color.g == image.color.g && spriteRenderer.color.b == image.color.b)
         {
-            //map.hpFillImage.value += 0.2f; hp
             map.blockpoint++;
             map.Point++;
             map.Scroll();
             player.Jump();
             player.transform.position = map.blockList[map.blockpoint].transform.position;
-            map.fillImage.color = spriteRenderer.color;
             map.MakeBullet();
             monster.mpImage.fillAmount -= 0.01f;
         }

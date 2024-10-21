@@ -45,7 +45,7 @@ public class Map : MonoBehaviour
     public List<GameObject> blockList;
     public List<Color> colors = new List<Color>();
     public TextMeshProUGUI textpoint;
-    public Slider slider;
+    public Image skillbar;
     public Slider hpFillImage;
 
 
@@ -64,19 +64,15 @@ public class Map : MonoBehaviour
     public void UseSkil()
     {
 
-        if (slider.value < 100)
+        if (skillbar.fillAmount < 1)
             return;
-
 
         // 초록색 스킬 = 포인트를 2~5 점 점수를 준다
         // 파란색 스킬 = 방어스킬 한번 잘못 눌러도 무마 시켜준다
         // 빨간색 스킬 = 시간이 안흘러가게끔 해주는 기술?
 
-        if (fillImage.color == Color.green) { }
-        else if (fillImage.color == Color.blue) { }
-        else if (fillImage.color == Color.red) { }
-
-            slider.value = 0;
+   
+        skillbar.fillAmount = 0;
         Debug.Log("스킬을 사용함");
     }
 
@@ -87,8 +83,8 @@ public class Map : MonoBehaviour
         StartCoroutine(BackGround());
 
         
-        if (!(slider.value >= 100))
-        slider.value++;
+        if (!(skillbar.fillAmount >= 1))
+            skillbar.fillAmount += 0.05f;
 
         if (block.transform.position.y <= -12)
             block.transform.position = new Vector3(block.transform.position.x, 12, block.transform.position.z);
@@ -110,16 +106,7 @@ public class Map : MonoBehaviour
         textpoint.text = point.ToString();
     }
 
-    IEnumerator HpDown()
-    {
-        while (hpFillImage.value > 0)
-        {
-            hpFillImage.value--;
-            Debug.Log("데미지들어감");
-            yield return new WaitForSeconds(1);
-        }
-    }
-
+    
 
     IEnumerator GreenSkill()
     {
