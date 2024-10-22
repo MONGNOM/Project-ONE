@@ -101,17 +101,8 @@ public class Map : MonoBehaviour
         textpoint.text = point.ToString();
     }
 
-    
-
-    IEnumerator GreenSkill()
-    {
-        yield return new WaitForSeconds(10);
-    }
-
-
     IEnumerator BackGround()
     {
-       
             yield return new WaitForSeconds(0.3f);
             image1.color = new Color(image1.color.r,image1.color.g,image1.color.b,   0.5f);
             image2.color = new Color(image2.color.r, image2.color.g, image2.color.b, 0.5f);
@@ -145,9 +136,5 @@ public class Map : MonoBehaviour
 
 
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+   
 }
