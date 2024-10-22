@@ -13,12 +13,14 @@ public class TouchtoScreen : MonoBehaviour, IPointerDownHandler
     Player player;
     Map map;
     HpMonster monster;
+    Skill skill;
 
     private void Start()
     {
         player = FindAnyObjectByType<Player>();
         map = FindAnyObjectByType<Map>();
         monster = FindAnyObjectByType<HpMonster>();
+        skill = FindAnyObjectByType<Skill>();
         image = GetComponent<Image>();
     }
 
@@ -32,13 +34,25 @@ public class TouchtoScreen : MonoBehaviour, IPointerDownHandler
         SpriteRenderer spriteRenderer = map.blockList[map.blockpoint].GetComponent<SpriteRenderer>();
         if (true)//spriteRenderer.color.r == image.color.r && spriteRenderer.color.g == image.color.g && spriteRenderer.color.b == image.color.b)
         {
+
+            if (skill.pointup)
+            {
+                monster.mpImage.fillAmount -= 0.02f;
+                map.PointUp(2);
+            }
+            else
+            {
+                monster.mpImage.fillAmount -= 0.01f;
+                map.PointUp(1);
+            }
+
+
             map.blockpoint++;
-            map.PointUp(1);
             map.Scroll();
             player.Jump();
             player.transform.position = map.blockList[map.blockpoint].transform.position;
             map.MakeBullet();
-            monster.mpImage.fillAmount -= 0.01f;
+            
         }
         else
         {

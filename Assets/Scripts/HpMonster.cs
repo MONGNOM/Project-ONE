@@ -15,6 +15,7 @@ public class HpMonster : MonoBehaviour
     public Image mpImage;
     public UnityEvent pageon;
     public GameOverPage overPage;
+    public float mp;
 
     private float monsterHp;
 
@@ -32,11 +33,12 @@ public class HpMonster : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        mp = 0.1f;
         overPage = FindObjectOfType<GameOverPage>();
         changeHp += HpString;
         monsterHp = 0;
-       hpImage.fillAmount = monsterHp;
-       StartCoroutine(MoveHpMonster());
+        hpImage.fillAmount = monsterHp;
+        StartCoroutine(MoveHpMonster());
     }
 
 
@@ -69,13 +71,18 @@ public class HpMonster : MonoBehaviour
         while (mpImage.fillAmount < 1)
         {
             yield return new WaitForSeconds(attackTime);
-            mpImage.fillAmount += 0.1f;
+            MpCharge(mp);
             Debug.Log(mpImage.fillAmount);
         }
 
         Attack();
         Debug.Log("АјАн");
        
+    }
+
+    public void MpCharge(float mp)
+    {
+        mpImage.fillAmount += mp;
     }
 
     private void TakeHit(float damage)

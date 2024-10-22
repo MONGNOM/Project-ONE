@@ -16,7 +16,6 @@ public class Map : MonoBehaviour
 
 
     private int point;
-        // o
     public int Point { get { return point; } set { point = value; textPointDeleatgae?.Invoke(point); } }
 
     public int blockpoint = 0;
