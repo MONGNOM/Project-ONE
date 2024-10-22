@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -12,9 +13,13 @@ public class Bullet : MonoBehaviour
     private float bulletSpeed;
 
     public BoxCollider2D box;
+    HpMonster monster;
+    public Skill skill;
 
     private void Awake()
     {
+        monster = FindAnyObjectByType<HpMonster>();
+        skill = FindObjectOfType<Skill>();
         box = GetComponent<BoxCollider2D>();   
     }
     void Start()
@@ -32,6 +37,15 @@ public class Bullet : MonoBehaviour
     {
         if (collision.gameObject.GetComponent<HpMonster>())
         {
+           
+            if (skill.pointup)
+            {
+                monster.mpImage.fillAmount -= 0.02f;
+            }
+            else
+            {
+                monster.mpImage.fillAmount -= 0.01f;
+            }
             Destroy(gameObject);
         }
     }

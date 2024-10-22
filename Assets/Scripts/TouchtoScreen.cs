@@ -37,12 +37,10 @@ public class TouchtoScreen : MonoBehaviour, IPointerDownHandler
 
             if (skill.pointup)
             {
-                monster.mpImage.fillAmount -= 0.02f;
                 map.PointUp(2);
             }
             else
             {
-                monster.mpImage.fillAmount -= 0.01f;
                 map.PointUp(1);
             }
 

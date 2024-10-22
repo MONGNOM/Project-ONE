@@ -48,7 +48,7 @@ public class Skill : MonoBehaviour
     {
         monster.mp = 0;
         yield return new WaitForSeconds(5);
-        monster.mp = 0.1f;
+        monster.mp = 0.05f;
 
     }
 
