@@ -72,6 +72,13 @@ public class Map : MonoBehaviour
     }
 
 
+    public void PointUp(int pt)
+    {
+        Point += pt;
+        TextPoint(Point);
+    }
+
+
 
     public void Scroll()
     {
@@ -91,8 +98,8 @@ public class Map : MonoBehaviour
         block.transform.position += Vector3.down * scrollPower;
         block2.transform.position += Vector3.down * scrollPower;
         backGroundImage.transform.position += Vector3.down * blockscrollPower;
-         
-        textPointDeleatgae += TextPoint;
+
+        //textPointDeleatgae += TextPoint; 2칸부터 표시가되어 주석처리
 
     }
 
@@ -116,6 +123,7 @@ public class Map : MonoBehaviour
 
     void Start()
     {
+        
         gameOver = true;
         skillbar.fillAmount = 0;
         touchtoScreen = FindAnyObjectByType<TouchtoScreen>();

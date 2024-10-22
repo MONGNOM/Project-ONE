@@ -50,6 +50,8 @@ public class HpMonster : MonoBehaviour
         }
     }
 
+    
+
     public void Attack()
     {
         idle.sprite = attack;

@@ -33,7 +33,7 @@ public class TouchtoScreen : MonoBehaviour, IPointerDownHandler
         if (true)//spriteRenderer.color.r == image.color.r && spriteRenderer.color.g == image.color.g && spriteRenderer.color.b == image.color.b)
         {
             map.blockpoint++;
-            map.Point++;
+            map.PointUp(1);
             map.Scroll();
             player.Jump();
             player.transform.position = map.blockList[map.blockpoint].transform.position;
