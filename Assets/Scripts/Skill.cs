@@ -4,15 +4,15 @@ using UnityEngine;
 
 public class Skill : MonoBehaviour
 {
-    Map map;
-
+    HpMonster monster;
     public bool pointup;
+    public bool shield;
 
 
 
     private void Awake()
     {
-        map = FindAnyObjectByType<Map>();
+        monster = FindAnyObjectByType<HpMonster>();
     }
     public void SkillPointUp()
     {
@@ -22,11 +22,13 @@ public class Skill : MonoBehaviour
 
     public void SkillShield()
     {
+        shield = true;
         Debug.Log("쉴드");
     }
 
     public void SkillMpBlock()
     {
+        StartCoroutine(BlockMp());
         Debug.Log("Mp막기");
     }
 
@@ -35,10 +37,20 @@ public class Skill : MonoBehaviour
     IEnumerator PointUp()
     {
         pointup = true;
-        Debug.Log("포인트시작");
-        yield return new WaitForSeconds(15);
+        yield return new WaitForSeconds(10);
         pointup = false;
-        Debug.Log("포인트끝");
+    }
+
+  
+
+
+    IEnumerator BlockMp()
+    {
+        monster.mp = 0;
+        yield return new WaitForSeconds(5);
+        monster.mp = 0.1f;
 
     }
+
+
 }
